@@ -14,21 +14,31 @@ body {
   position: relative;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
   color: #222;
   background-color: #f0f0f0;
 }
 
 header {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   position: sticky;
   top: 0;
-  padding: 1rem;
-  background-color: #222;
   color: #fff;
   z-index: 1000;
+}
+
+.root-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: burlywood;
+  padding: 10px;
+}
+
+.sub-header {
+  text-align: center;
+  background-color: blue;
+  padding: 4px;
 }
 
 main {
@@ -66,4 +76,15 @@ button {
 .success-message {
   color: white;
   background-color: green;
+}
+
+@media (min-width: 1024px) {
+  .root-header {
+    padding: 20px;
+  }
+
+  .nav-links-list {
+    display: flex;
+    gap: 50px;
+  }
 }
