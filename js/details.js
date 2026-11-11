@@ -1,6 +1,8 @@
-import { STORAGE_KEYS } from "/js/constants.js";
-import { getAllProductsOrProductDetails } from "/js/apis.js";
-import { addItem } from "/js/crud.js";
+import { STORAGE_KEYS } from "/js/global/constants.js";
+import { getAllProductsOrProductDetails } from "/js/global/apis.js";
+import { addItem } from "/js/global/crud.js";
+
+const { CART_KEY, FAVORITES_KEY } = STORAGE_KEYS;
 
 const getProductData = async function () {
   let isLoading = true;
@@ -20,7 +22,7 @@ const getProductData = async function () {
     if (resData.data) {
       console.log(resData.data);
 
-      addItem(STORAGE_KEYS.FAVORITE_LIST_ST_KEY, resData.data);
+      addItem(FAVORITES_KEY, resData.data);
     }
   } finally {
     isLoading = false;

@@ -1,0 +1,4 @@
+export const STORAGE_KEYS = {
+  CART_KEY: "CART_LIST",
+  FAVORITES_KEY: "FAVORITE_LIST",
+};

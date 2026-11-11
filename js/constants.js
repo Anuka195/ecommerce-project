@@ -1,4 +1,0 @@
-export const STORAGE_KEYS = {
-  CART_LIST_ST_KEY: "CART_ST",
-  FAVORITE_LIST_ST_KEY: "FAVORITES_ST",
-};

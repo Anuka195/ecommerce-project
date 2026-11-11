@@ -1,4 +1,4 @@
-import { getAllProductsOrProductDetails } from "/js/apis.js";
+import { getAllProductsOrProductDetails } from "/js/global/apis.js";
 
 console.log("test home.js");
 
