@@ -3,7 +3,7 @@ import { timeOutTest } from "./utils.js";
 let errorMessage = null;
 let data = null;
 
-export async function getAllProductsOrProductDetails(url) {
+export async function fetchAllProductsOrProductDetails(url) {
   errorMessage = null;
   data = null;
 

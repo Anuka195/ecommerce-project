@@ -1,8 +1,8 @@
-import { getAllProductsOrProductDetails } from "/js/global/apis.js";
+import { fetchAllProductsOrProductDetails } from "/js/global/apis.js";
 
 console.log("test home.js");
 
-const products = await getAllProductsOrProductDetails(
+const products = await fetchAllProductsOrProductDetails(
   "https://dummyjson.com/products",
 );
 

@@ -1,5 +1,5 @@
 import { STORAGE_KEYS } from "/js/global/constants.js";
-import { getAllProductsOrProductDetails } from "/js/global/apis.js";
+import { fetchAllProductsOrProductDetails } from "/js/global/apis.js";
 import { addItemToStorage } from "/js/global/crud.js";
 
 const { CART_KEY, FAVORITES_KEY } = STORAGE_KEYS;
@@ -10,7 +10,7 @@ const getProductDetailsData = async function () {
   isLoading && console.log("loading");
 
   try {
-    const resData = await getAllProductsOrProductDetails(
+    const resData = await fetchAllProductsOrProductDetails(
       "https://dummyjson.com/products/1",
     );
 
