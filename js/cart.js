@@ -111,7 +111,7 @@ if (cart.length === 0) {
             }
         });
 
-        // Lägg till allt i produktkortet
+
         productCard.append(
             productName,
             productPrice,
@@ -123,13 +123,20 @@ if (cart.length === 0) {
             removeButton
         );
 
-        // Visa produktkortet på sidan
         cartContent.appendChild(productCard);
     });
 
-    // Visa totalpriset under produkterna
     cartContent.appendChild(totalText);
 
-    // Räkna ut totalpriset första gången
     updateCart();
+
+
+    const checkoutButton = document.createElement("button");
+    checkoutButton.textContent = "Till kassan";
+
+    cartContent.appendChild(checkoutButton);
+
+    checkoutButton.addEventListener("click", function () {
+    window.location.href = "checkout.html";
+});
 }
