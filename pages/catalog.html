@@ -23,10 +23,37 @@
       <div class="sub-header">Catalog</div>
     </header>
     <main id="catalogPageMain">
+
+      <aside>
+        <form id="searchForm">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search products"/>
+          <button type="submit">
+            Search
+          </button>
+        </form>
+
+        <select name="filterDropDown" id="filterDropDown">
+          <option>
+            All
+          </option>
+        </select>
+
+        <select id="sortDropDown">
+          <option value="">Sort by...</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="title-asc">Title: A–Z</option>
+          <option value="title-desc">Title: Z–A</option>
+        </select>
+      </aside>
+
       <div id="catalogPageLoading"></div>
       <div id="catalogPageMessages"></div>
       <div id="catalogPageContent"></div>
     </main>
-    <script src="../js/catalog.js"></script>
+    <script src="../js/catalog.js"  type="module"></script>
   </body>
 </html>
