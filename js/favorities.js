@@ -40,9 +40,9 @@ if (favorites.length === 0) {
                 favoritesContent.textContent = "Du har inga favoriter ännu.";
             }
         });
-
-        productCard.append(productName, productPrice, productImage, removeButton);
+productCard.append(productName, productPrice, productImage, removeButton);
         favoritesContent.appendChild(productCard);
+        
     });
 }
 
