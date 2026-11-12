@@ -1,9 +1,31 @@
 import { fetchAllProductsOrProductDetails } from "/js/global/apis.js";
 
-console.log("test home.js");
+const toCatalogBtnEl = document.querySelector("#homePageToCatalogBtn");
 
-const products = await fetchAllProductsOrProductDetails(
-  "https://dummyjson.com/products",
-);
+const getAllProductsData = async function () {
+  let isLoading = true;
 
-console.log(products);
+  isLoading && console.log("loading");
+
+  try {
+    const resData = await fetchAllProductsOrProductDetails(
+      "https://dummyjson.com/products",
+    );
+
+    if (resData.errorMessage) {
+      console.log(resData.errorMessage);
+      isLoading = false;
+      return;
+    }
+    const products = resData.data;
+    console.log(products);
+  } finally {
+    isLoading = false;
+  }
+};
+
+getAllProductsData();
+
+toCatalogBtnEl.addEventListener("click", () => {
+  window.location.href = "../pages/catalog.html";
+});
