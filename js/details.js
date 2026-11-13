@@ -30,7 +30,7 @@ const getDetailsData = async function () {
 };
 
 function renderDetails(data) {
-  const { title, description, pris, category, thumbnail } = data;
+  const { title, description, price, category, thumbnail } = data;
   /* console.log(title, description, pris, category, thumbnail); */
 
   addFavoriteBtnEl.addEventListener("click", () => {
@@ -43,13 +43,15 @@ function renderDetails(data) {
 }
 
 function addToCartList(data) {
-  const { id, title, pris } = data;
-  addItemToStorage(CART_KEY, { id, title, pris });
+  const { id, title, price, images } = data;
+
+  const thm = images[0];
+  addItemToStorage(CART_KEY, { id, title, price, thm });
 }
 
 function addToFavoriteList(data) {
   const { id, title, description, price } = data;
-  addItemToStorage(FAVORITES_KEY, { id, title, description, price });
+  addItemToStorage(FAVORITES_KEY, { id, title, description, price, thumbnail });
 }
 
 //render code from here
