@@ -1,9 +1,12 @@
+import { STORAGE_KEYS } from "./global/constants.js";
+
+const{CART_KEY}= STORAGE_KEYS
 
 console.log("test cart.js");
 
 const cartContent = document.getElementById("cartPageContent");
 
-const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
 
 let totalPrice = 0;
 

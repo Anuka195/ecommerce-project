@@ -1,9 +1,14 @@
+import { STORAGE_KEYS } from "./global/constants.js";
+
+const {FAVORITES_KEY}= STORAGE_KEYS
+
+console.log(STORAGE_KEYS.CART_KEY)
 
 console.log("test favorites.js");
 
 const favoritesContent = document.getElementById("favoritesPageContent");
 
-const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+const favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
 
 if (favorites.length === 0) {
     favoritesContent.textContent = "Du har inga favoriter ännu.";
