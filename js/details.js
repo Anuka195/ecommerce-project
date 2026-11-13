@@ -1,5 +1,5 @@
-import { STORAGE_KEYS } from "/js/global/constants.js";
 import { fetchAllProductsOrProductDetails } from "/js/global/apis.js";
+import { STORAGE_KEYS } from "/js/global/constants.js";
 import { addItemToStorage } from "/js/global/crud.js";
 
 const addFavoriteBtnEl = document.querySelector("#detailsPageAddFavoriteBtn");
@@ -30,28 +30,29 @@ const getDetailsData = async function () {
 };
 
 function renderDetails(data) {
-  const { title, description, price, category, thumbnail } = data;
-  /* console.log(title, description, pris, category, thumbnail); */
+  const { title, description, price, category, images } = data;
+  const detailsImgUrl = images[0];
+  /*   console.log(title, description, price, category, detailsImgUrl); */
 
   addFavoriteBtnEl.addEventListener("click", () => {
-    addToFavoriteList(data);
+    const { id, title, description, price, images } = data;
+    const imageUrl = images[0];
+
+    addItemToStorage(FAVORITES_KEY, {
+      id,
+      title,
+      description,
+      price,
+      imageUrl,
+    });
   });
 
   addToCartBtnEl.addEventListener("click", () => {
-    addToCartList(data);
+    const { id, title, price, images } = data;
+    const imageUrl = images[0];
+
+    addItemToStorage(CART_KEY, { id, title, price, imageUrl });
   });
-}
-
-function addToCartList(data) {
-  const { id, title, price, images } = data;
-
-  const thm = images[0];
-  addItemToStorage(CART_KEY, { id, title, price, thm });
-}
-
-function addToFavoriteList(data) {
-  const { id, title, description, price } = data;
-  addItemToStorage(FAVORITES_KEY, { id, title, description, price, thumbnail });
 }
 
 //render code from here
