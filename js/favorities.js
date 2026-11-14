@@ -23,7 +23,7 @@ if (favorites.length === 0) {
         productPrice.textContent = product.price + " kr";
 
         const productImage = document.createElement("img");
-        productImage.src = product.thumbnail;
+        productImage.src = product.imageUrl;
         productImage.alt = product.title;
         productImage.width = 150;
 
@@ -34,10 +34,10 @@ if (favorites.length === 0) {
             console.log("Favorit borttagen");
 
             const updatedFavorites = JSON.parse(
-                localStorage.getItem("favorites") || "[]"
+                localStorage.getItem(FAVORITES_KEY) || "[]"
             ).filter(item => item.id !== product.id);
 
-            localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+            localStorage.setItem(FAVORITES_KEY, JSON.stringify(updatedFavorites));
 
             productCard.remove();
 

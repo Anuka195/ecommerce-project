@@ -16,126 +16,128 @@ const totalText = document.createElement("h3");
 
 // Uppdatera totalpriset och spara varukorgen
 function updateCart() {
-  totalPrice = 0;
+    totalPrice = 0;
 
-  cart.forEach(function (product) {
-    totalPrice += product.price * 1;
-  });
+    cart.forEach(function (product) {
+        totalPrice += product.price * product.quantity;
+    });
 
-  totalText.textContent = "Totalt att betala: " + totalPrice + " kr";
+    totalText.textContent = "Totalt att betala: " + totalPrice.toFixed(2) + " kr";
 
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
 if (cart.length === 0) {
-  cartContent.textContent = "Du har inga produkter i varukorgen.";
+    cartContent.textContent = "Du har inga produkter i varukorgen.";
 } else {
-  cart.forEach(function (product) {
-    console.log(product.title);
+    cart.forEach(function (product) {
+        console.log(product.title);
 
-    // Skapa produktkort
-    const productCard = document.createElement("div");
+        product.quantity = product.quantity ?? 1;
 
-    // Produktens namn
-    const productName = document.createElement("h3");
-    productName.textContent = product.title;
+        // Skapa produktkort
+        const productCard = document.createElement("div");
 
-    // Produktens pris
-    const productPrice = document.createElement("p");
-    productPrice.textContent = product.price + " kr";
+        // Produktens namn
+        const productName = document.createElement("h3");
+        productName.textContent = product.title;
 
-    // Produktens bild
-    const productImage = document.createElement("img");
-    productImage.src = product.thumbnail;
-    productImage.alt = product.title;
-    productImage.width = 150;
+        // Produktens pris
+        const productPrice = document.createElement("p");
+        productPrice.textContent = product.price + " kr";
 
-    // Antal produkter
-    const productQuantity = document.createElement("p");
-    productQuantity.textContent = "Antal: " + product.quantity;
+        // Produktens bild
+        const productImage = document.createElement("img");
+        productImage.src = product.thm || product.imageUrl;
+        productImage.alt = product.title;
+        productImage.width = 150;
 
-    // Summa för produkten
-    const productSumma = document.createElement("p");
-    productSumma.textContent =
-      "Summa: " + product.price * product.quantity + " kr";
-
-    // Plusknapp
-    const plusButton = document.createElement("button");
-    plusButton.textContent = "+";
-
-    plusButton.addEventListener("click", function () {
-      product.quantity += 1;
-
-      productQuantity.textContent = "Antal: " + product.quantity;
-
-      productSumma.textContent =
-        "Summa: " + product.price * product.quantity + " kr";
-
-      updateCart();
-    });
-
-    // Minusknapp
-    const minusButton = document.createElement("button");
-    minusButton.textContent = "-";
-
-    minusButton.addEventListener("click", function () {
-      if (product.quantity > 1) {
-        product.quantity -= 1;
-
+        // Antal produkter
+        const productQuantity = document.createElement("p");
         productQuantity.textContent = "Antal: " + product.quantity;
 
+        // Summa för produkten
+        const productSumma = document.createElement("p");
         productSumma.textContent =
-          "Summa: " + product.price * product.quantity + " kr";
+            "Summa: " + product.price * product.quantity + " kr";
 
-        updateCart();
-      }
+        // Plusknapp
+        const plusButton = document.createElement("button");
+        plusButton.textContent = "+";
+
+        plusButton.addEventListener("click", function () {
+            product.quantity += 1;
+
+            productQuantity.textContent = "Antal: " + product.quantity;
+
+            productSumma.textContent =
+                "Summa: " + product.price * product.quantity + " kr";
+
+            updateCart();
+        });
+
+        // Minusknapp
+        const minusButton = document.createElement("button");
+        minusButton.textContent = "-";
+
+        minusButton.addEventListener("click", function () {
+            if (product.quantity > 1) {
+                product.quantity -= 1;
+
+                productQuantity.textContent = "Antal: " + product.quantity;
+
+                productSumma.textContent =
+                    "Summa: " + product.price * product.quantity + " kr";
+
+                updateCart();
+            }
+        });
+
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Ta bort";
+
+        removeButton.addEventListener("click", function () {
+            const productIndex = cart.findIndex(function (item) {
+                return item.id === product.id;
+            });
+
+            if (productIndex !== -1) {
+                cart.splice(productIndex, 1);
+            }
+
+            productCard.remove();
+
+            updateCart();
+
+            if (cart.length === 0) {
+                cartContent.textContent = "Du har inga produkter i varukorgen.";
+            }
+        });
+
+        productCard.append(
+            productName,
+            productPrice,
+            productImage,
+            productQuantity,
+            productSumma,
+            plusButton,
+            minusButton,
+            removeButton,
+        );
+
+        cartContent.appendChild(productCard);
     });
 
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "Ta bort";
+    cartContent.appendChild(totalText);
 
-    removeButton.addEventListener("click", function () {
-      const productIndex = cart.findIndex(function (item) {
-        return item.id === product.id;
-      });
+    updateCart();
 
-      if (productIndex !== -1) {
-        cart.splice(productIndex, 1);
-      }
+    const checkoutButton = document.createElement("button");
+    checkoutButton.textContent = "Till kassan";
 
-      productCard.remove();
+    cartContent.appendChild(checkoutButton);
 
-      updateCart();
-
-      if (cart.length === 0) {
-        cartContent.textContent = "Du har inga produkter i varukorgen.";
-      }
+    checkoutButton.addEventListener("click", function () {
+        window.location.href = "checkout.html";
     });
-
-    productCard.append(
-      productName,
-      productPrice,
-      productImage,
-      productQuantity,
-      productSumma,
-      plusButton,
-      minusButton,
-      removeButton,
-    );
-
-    cartContent.appendChild(productCard);
-  });
-
-  cartContent.appendChild(totalText);
-
-  updateCart();
-
-  const checkoutButton = document.createElement("button");
-  checkoutButton.textContent = "Till kassan";
-
-  cartContent.appendChild(checkoutButton);
-
-  checkoutButton.addEventListener("click", function () {
-    window.location.href = "checkout.html";
-  });
 }
