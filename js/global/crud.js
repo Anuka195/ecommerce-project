@@ -9,3 +9,10 @@ export function addItemToStorage(key, item) {
 
   console.log(`saved to storage: KEY=${key} ,item=`, item);
 }
+
+//checks if the item is already in the storage by checking the id of the item
+export function isItemInTheStorage(key, id) {
+  const items = getData(key) || [];
+
+  return items.some((item) => item.id === id);
+}
