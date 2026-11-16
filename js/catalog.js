@@ -1,3 +1,7 @@
+import { STORAGE_KEYS } from "/js/global/constants.js";
+import { addItemToStorage } from "/js/global/crud.js";
+
+
 const dropdown = document.getElementById("filterDropDown");
 const sortDropdown = document.getElementById("sortDropDown");
 const catalogPageContent = document.getElementById("catalogPageContent");
@@ -37,12 +41,19 @@ async function fetchData(url, options) {
 async function createCards(data) {
 
     data.forEach(product => {
+
         const container = document.getElementById("catalogPageContent");
     
         const card = document.createElement("div");
     
+
+        const a = document.createElement('a');
+        a.href = `details.html?id=${product.id}`
+
         const img = document.createElement("img");
         img.src = product.img[0];
+        a.append(img)
+        
     
         const title = document.createElement("h3");
         title.textContent = product.title;
@@ -52,10 +63,28 @@ async function createCards(data) {
     
         const tags = document.createElement("p");
         tags.textContent = product.tags.join(", ");
-    
-        card.append(img, title, price, tags);
+
+
+        const item = {id: product.id, title: product.title, price: product.price, imageUrl: product.img[0],
+        };
+
+        const cartBtn = document.createElement("button");
+        cartBtn.textContent = "Add to cart"
+        cartBtn.addEventListener("click", () => {
+            addItemToStorage(STORAGE_KEYS.CART_KEY, item)
+        })
+
+        const favBtn = document.createElement("button");
+        favBtn.textContent = "Add to Favorit"
+        favBtn.addEventListener("click", () => {
+            addItemToStorage(STORAGE_KEYS.FAVORITES_KEY, item)
+        })
+
+
+
+        card.append(a, title, price, tags, cartBtn, favBtn);
         container.append(card);
-    })
+    });
 }
 
 
