@@ -1,15 +1,15 @@
 import { fetchAllProductsOrProductDetails } from "/js/global/apis.js";
 
-const toCatalogBtnEl = document.querySelector("#homePageToCatalogBtn");
 const homePageLoadingEl = document.querySelector("#homePageLoading");
+const homePageMessagesEl = document.querySelector("#homePageMessages");
+
 const homePageContentEl = document.querySelector("#homePageContent");
 
+const toCatalogBtnEl = document.querySelector("#homePageToCatalogBtn");
 const homePageProductsListEl = document.querySelector("#homePageProductsList");
 
 const getAllProductsData = async function () {
   let isLoading = true;
-
-  isLoading && console.log("loading");
 
   homePageLoadingEl.style.display = isLoading ? "block" : "none";
   homePageLoadingEl.textContent = isLoading ? "Loading..." : "";
@@ -22,7 +22,10 @@ const getAllProductsData = async function () {
     );
 
     if (resData.errorMessage) {
-      console.log(resData.errorMessage);
+      /* console.log(resData.errorMessage); */
+      homePageMessagesEl.textContent =
+        "An Error As Occurred:" + resData.errorMessage;
+      homePageLoadingEl.style.display = "none";
       isLoading = false;
       return;
     }

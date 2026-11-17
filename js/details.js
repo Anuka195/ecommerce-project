@@ -7,10 +7,11 @@ const productId = params.get("id");
 const { CART_KEY, FAVORITES_KEY } = STORAGE_KEYS;
 
 const detailsPageLoadingEl = document.querySelector("#detailsPageLoading");
+const detailsPageMessagesEl = document.querySelector("#detailsPageMessages");
 const detailsPageContentEl = document.querySelector("#detailsPageContent");
 
 const productTitleEl = document.querySelector("#detailsPageProductTitle");
-const productCategoryEl = document.querySelector("#detailsPageProducCategory");
+const productCategoryEl = document.querySelector("#detailsPageProductCategory");
 const productDescriptionEl = document.querySelector(
   "#detailsPageProductDescription",
 );
@@ -18,10 +19,11 @@ const productDescriptionEl = document.querySelector(
 const addFavoriteBtnEl = document.querySelector("#detailsPageAddFavoriteBtn");
 const addToCartBtnEl = document.querySelector("#detailsPageAddToCartBtn");
 
+const backBtnEl = document.querySelector("#detailsPageBackBtn");
+
 const getDetailsData = async function () {
   let isLoading = true;
 
-  isLoading && console.log("loading");
   detailsPageLoadingEl.style.display = isLoading ? "block" : "none";
   detailsPageLoadingEl.textContent = isLoading ? "Loading..." : "";
 
@@ -33,18 +35,20 @@ const getDetailsData = async function () {
     );
 
     if (resData.errorMessage) {
-      console.log(resData.errorMessage);
+      detailsPageMessagesEl.textContent =
+        "An Error As Occurred" + resData.errorMessage;
+      detailsPageLoadingEl.style.display = "none";
       isLoading = false;
       return;
     }
 
-    renderDetails(resData.data);
+    renderDetailsPageContent(resData.data);
   } finally {
     isLoading = false;
   }
 };
 
-function renderDetails(data) {
+function renderDetailsPageContent(data) {
   detailsPageLoadingEl.textContent = "";
   detailsPageContentEl.style.display = "block";
 
@@ -55,7 +59,6 @@ function renderDetails(data) {
   const isOnCartList = isItemInTheStorage(CART_KEY, id);
 
   updateButtonState(addFavoriteBtnEl, isOnFavoriteList);
-
   updateButtonState(addToCartBtnEl, isOnCartList);
 
   productTitleEl.textContent = title;
@@ -88,6 +91,10 @@ function renderDetails(data) {
     addItemToStorage(CART_KEY, { id, title, price, imageUrl });
 
     updateButtonState(addToCartBtnEl, true);
+  });
+
+  backBtnEl.addEventListener("click", () => {
+    window.location.href = "./catalog.html";
   });
 }
 

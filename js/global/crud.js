@@ -10,7 +10,7 @@ export function addItemToStorage(key, item) {
   console.log(`saved to storage: KEY=${key} ,item=`, item);
 }
 
-//checks if the item is already in the storage by checking the id of the item
+//checks if an item is already in the storage list by checking the id of the item and returns a bolean
 export function isItemInTheStorage(key, id) {
   const items = getData(key) || [];
 
