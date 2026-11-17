@@ -1,5 +1,6 @@
 import { STORAGE_KEYS } from "/js/global/constants.js";
 import { addItemToStorage } from "/js/global/crud.js";
+import { isItemInTheStorage } from "/js/global/crud.js";
 
 
 const dropdown = document.getElementById("filterDropDown");
@@ -70,14 +71,21 @@ async function createCards(data) {
 
         const cartBtn = document.createElement("button");
         cartBtn.textContent = "Add to cart"
+
         cartBtn.addEventListener("click", () => {
             addItemToStorage(STORAGE_KEYS.CART_KEY, item)
         })
 
         const favBtn = document.createElement("button");
-        favBtn.textContent = "Add to Favorit"
+
+        favBtn.textContent = checkFavBtn(product.id)
+        
+
         favBtn.addEventListener("click", () => {
-            addItemToStorage(STORAGE_KEYS.FAVORITES_KEY, item)
+            if (isItemInTheStorage("FAVORITE_LIST", product.id) != true) {
+                addItemToStorage(STORAGE_KEYS.FAVORITES_KEY, item)
+                favBtn.textContent = checkFavBtn(product.id)
+            }
         })
 
 
@@ -87,6 +95,14 @@ async function createCards(data) {
     });
 }
 
+//Kollar om produkt finns i FAVORITE_LIST
+function checkFavBtn(id) {
+        if (isItemInTheStorage("FAVORITE_LIST", id)) {
+            return "Added to favorit"
+        }else {
+            return "Add to favorit"
+        }
+}
 
 //Skapar dropdown filter
 async function createFilter() 
