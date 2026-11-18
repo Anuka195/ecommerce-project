@@ -45,26 +45,6 @@ main {
   padding: 0 10px;
 }
 
-h1 {
-  font-size: 1.5rem;
-}
-
-h2 {
-  font-size: 1.2rem;
-}
-
-h3 {
-  font-size: 1.1rem;
-}
-
-p {
-  font-size: 0.9rem;
-}
-
-button {
-  font-size: 0.8rem;
-}
-
 .spinner-container {
   width: 30px;
   height: 30px;
@@ -96,9 +76,24 @@ button {
   color: red;
 }
 
-.success-message {
-  color: white;
-  background-color: green;
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+button {
+  font-size: 0.8rem;
 }
 
 @media (min-width: 1024px) {
