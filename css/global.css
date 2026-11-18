@@ -1,10 +1,10 @@
 /* 
 NOTE:
--Here write only static css that will shares between all pages, no page specific css
-- "loading-spinner" lowercase - lowercase -> Use this patern for all custom global classes:
+-css that will shares across all pages, no pages specific
+- "loading-spinner" lowercase - lowercase -> Use this pattern for all custom global classes:
 */
 
-/* mobile first */
+/* mobile first as minimun 360px width */
 * {
   margin: 0;
   box-sizing: border-box;
@@ -15,7 +15,7 @@ body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   color: #222;
-  background-color: #f0f0f0;
+  background-color: #f3d2af;
 }
 
 header {
@@ -31,13 +31,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: burlywood;
+  background-color: #09251c;
   padding: 10px;
 }
 
 .sub-header {
   text-align: center;
-  background-color: blue;
+  background-color: #a55704;
   padding: 4px;
 }
 
@@ -93,9 +93,19 @@ p {
 }
 
 button {
+  background-color: #09251c;
+  color: white;
   font-size: 0.8rem;
+  padding: 5px 10px;
 }
 
+ol,
+ul {
+  background-color: #f8eadc;
+}
+
+/* Desktop over 1024px
+ */
 @media (min-width: 1024px) {
   .root-header {
     padding: 20px;
@@ -103,6 +113,12 @@ button {
 
   .nav-links-list {
     display: flex;
+    list-style: none;
+    background-color: transparent;
     gap: 50px;
+  }
+
+  a {
+    color: white;
   }
 }
