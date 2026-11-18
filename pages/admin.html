@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>admin</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <main id="adminPageMain">
+
+      <aside>
+        <form id="searchForm">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search products"/>
+          <button type="submit">
+            Search
+          </button>
+        </form>
+
+        <select name="filterDropDown" id="filterDropDown">
+          <option>
+            All
+          </option>
+        </select>
+
+        <select id="sortDropDown">
+          <option value="">Sort by...</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="title-asc">Title: A–Z</option>
+          <option value="title-desc">Title: Z–A</option>
+        </select>
+      </aside>
+
+      <div id="adminPageLoading"></div>
+      <div id="adminPageMessages"></div>
+      <div id="adminPageContent"></div>
+    </main>
+    <script src="../js/admin.js" type="module"></script>
+  </body>
+</html>

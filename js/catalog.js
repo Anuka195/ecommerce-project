@@ -1,6 +1,5 @@
 import { STORAGE_KEYS } from "/js/global/constants.js";
-import { addItemToStorage } from "/js/global/crud.js";
-import { isItemInTheStorage } from "/js/global/crud.js";
+import { addItemToStorage, isItemInTheStorage } from "/js/global/crud.js";
 
 
 const dropdown = document.getElementById("filterDropDown");
@@ -70,23 +69,24 @@ async function createCards(data) {
         };
 
         const cartBtn = document.createElement("button");
-        cartBtn.textContent = "Add to cart"
+        cartBtn.textContent = checkBtn(product.id, STORAGE_KEYS.CART_KEY) + "cart";
 
         cartBtn.addEventListener("click", () => {
-            addItemToStorage(STORAGE_KEYS.CART_KEY, item)
-        })
+            if (!isItemInTheStorage(STORAGE_KEYS.CART_KEY, product.id)) {
+                addItemToStorage(STORAGE_KEYS.CART_KEY, item);
+                cartBtn.textContent = checkBtn(product.id, STORAGE_KEYS.CART_KEY) + "cart";
+            }
+        });
 
         const favBtn = document.createElement("button");
-
-        favBtn.textContent = checkFavBtn(product.id)
-        
+        favBtn.textContent = checkBtn(product.id, STORAGE_KEYS.FAVORITES_KEY) + "favorites";
 
         favBtn.addEventListener("click", () => {
-            if (isItemInTheStorage("FAVORITE_LIST", product.id) != true) {
-                addItemToStorage(STORAGE_KEYS.FAVORITES_KEY, item)
-                favBtn.textContent = checkFavBtn(product.id)
+            if (!isItemInTheStorage(STORAGE_KEYS.FAVORITES_KEY, product.id)) {
+                addItemToStorage(STORAGE_KEYS.FAVORITES_KEY, item);
+                favBtn.textContent = checkBtn(product.id, STORAGE_KEYS.FAVORITES_KEY) + "favorites";
             }
-        })
+        });
 
 
 
@@ -95,12 +95,12 @@ async function createCards(data) {
     });
 }
 
-//Kollar om produkt finns i FAVORITE_LIST
-function checkFavBtn(id) {
-        if (isItemInTheStorage("FAVORITE_LIST", id)) {
-            return "Added to favorit"
+//Kollar om produkt finns i storage
+function checkBtn(id, key) {
+        if (isItemInTheStorage(key, id)) {
+            return "Added to "
         }else {
-            return "Add to favorit"
+            return "Add to "
         }
 }
 
