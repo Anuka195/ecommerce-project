@@ -4,10 +4,11 @@ import { addItemToStorage, isItemInTheStorage } from "/js/global/crud.js";
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
+
 const { CART_KEY, FAVORITES_KEY } = STORAGE_KEYS;
 
-const detailsPageLoadingEl = document.querySelector("#detailsPageLoading");
-const detailsPageMessagesEl = document.querySelector("#detailsPageMessages");
+const detailsPageLoadingEl = document.querySelector(".spinner-container");
+const detailsPageMessagesEl = document.querySelector(".messages-container");
 const detailsPageContentEl = document.querySelector("#detailsPageContent");
 
 const productTitleEl = document.querySelector("#detailsPageProductTitle");
@@ -22,12 +23,9 @@ const addToCartBtnEl = document.querySelector("#detailsPageAddToCartBtn");
 const backBtnEl = document.querySelector("#detailsPageBackBtn");
 
 const getDetailsData = async function () {
-  let isLoading = true;
+  detailsPageLoadingEl.style.display = "block";
 
-  detailsPageLoadingEl.style.display = isLoading ? "block" : "none";
-  detailsPageLoadingEl.textContent = isLoading ? "Loading..." : "";
-
-  detailsPageContentEl.style.display = isLoading ? "none" : "block";
+  detailsPageContentEl.style.display = "none";
 
   try {
     const resData = await fetchAllProductsOrProductDetails(
@@ -35,21 +33,20 @@ const getDetailsData = async function () {
     );
 
     if (resData.errorMessage) {
-      detailsPageMessagesEl.textContent =
-        "An Error As Occurred" + resData.errorMessage;
       detailsPageLoadingEl.style.display = "none";
-      isLoading = false;
+      detailsPageMessagesEl.classList.add("error-message");
+      detailsPageMessagesEl.textContent = "An Error As Occurred";
       return;
     }
 
     renderDetailsPageContent(resData.data);
   } finally {
-    isLoading = false;
+    detailsPageLoadingEl.style.display = "none";
   }
 };
 
 function renderDetailsPageContent(data) {
-  detailsPageLoadingEl.textContent = "";
+  detailsPageLoadingEl.style.display = "none";
   detailsPageContentEl.style.display = "block";
 
   const { id, title, description, price, category, images } = data;

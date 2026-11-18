@@ -1,11 +1,8 @@
 import { timeOutTest } from "./utils.js";
 
-let errorMessage = null;
-let data = null;
-
 export async function fetchAllProductsOrProductDetails(url) {
-  errorMessage = null;
-  data = null;
+  let errorMessage = null;
+  let data = null;
 
   try {
     await timeOutTest(2000);
