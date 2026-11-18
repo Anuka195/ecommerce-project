@@ -57,7 +57,7 @@ if (cart.length === 0) {
         productQuantity.textContent = "Antal: " + product.quantity;
 
         // Summa för produkten
-        const productSumma = document.createElement("p");
+        const productSumma = document.createElement("p"); 
         productSumma.textContent =
             "Summa: " + product.price * product.quantity + " kr";
 
