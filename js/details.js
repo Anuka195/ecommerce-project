@@ -24,7 +24,6 @@ const backBtnEl = document.querySelector("#detailsPageBackBtn");
 
 const getDetailsData = async function () {
   detailsPageLoadingEl.style.display = "block";
-
   detailsPageContentEl.style.display = "none";
 
   try {
@@ -46,7 +45,6 @@ const getDetailsData = async function () {
 };
 
 function renderDetailsPageContent(data) {
-  detailsPageLoadingEl.style.display = "none";
   detailsPageContentEl.style.display = "block";
 
   const { id, title, description, price, category, images } = data;

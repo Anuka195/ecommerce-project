@@ -1,7 +1,7 @@
 import { fetchAllProductsOrProductDetails } from "/js/global/apis.js";
 
-const homePageLoadingEl = document.querySelector("#homePageLoading");
-const homePageMessagesEl = document.querySelector("#homePageMessages");
+const homePageLoadingEl = document.querySelector(".spinner-container");
+const homePageMessagesEl = document.querySelector(".messages-container");
 
 const homePageContentEl = document.querySelector("#homePageContent");
 
@@ -9,12 +9,8 @@ const toCatalogBtnEl = document.querySelector("#homePageToCatalogBtn");
 const homePageProductsListEl = document.querySelector("#homePageProductsList");
 
 const getAllProductsData = async function () {
-  let isLoading = true;
-
-  homePageLoadingEl.style.display = isLoading ? "block" : "none";
-  homePageLoadingEl.textContent = isLoading ? "Loading..." : "";
-
-  homePageContentEl.style.display = isLoading ? "none" : "block";
+  homePageLoadingEl.style.display = "block";
+  homePageContentEl.style.display = "none";
 
   try {
     const resData = await fetchAllProductsOrProductDetails(
@@ -22,17 +18,13 @@ const getAllProductsData = async function () {
     );
 
     if (resData.errorMessage) {
-      /* console.log(resData.errorMessage); */
-      homePageMessagesEl.textContent =
-        "An Error As Occurred:" + resData.errorMessage;
       homePageLoadingEl.style.display = "none";
-      isLoading = false;
+      homePageMessagesEl.classList.add("error-message");
+      homePageMessagesEl.textContent = "An Error As Occurred:";
       return;
     }
     const products = resData.data.products;
-    /*   console.log(products); */
 
-    homePageLoadingEl.textContent = "";
     homePageContentEl.style.display = "block";
 
     products.forEach((product) => {
@@ -41,7 +33,7 @@ const getAllProductsData = async function () {
       homePageProductsListEl.appendChild(productItemEl);
     });
   } finally {
-    isLoading = false;
+    homePageLoadingEl.style.display = "none";
   }
 };
 
