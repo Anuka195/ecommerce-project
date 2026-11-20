@@ -51,6 +51,11 @@
   padding: 10px 20px;
 }
 
+#productSectionTitle {
+  text-align: center;
+  padding: 10px 0;
+}
+
 #homePageProductsList {
   display: flex;
   flex-direction: column;
@@ -89,6 +94,10 @@
   .home-page_to-catalog__btn {
     left: 49%;
     cursor: pointer;
+  }
+
+  #productSectionTitle {
+    padding: 15px 0;
   }
 
   #homePageProductsList {
