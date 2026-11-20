@@ -1,5 +1,8 @@
 import { fetchAllProductsOrProductDetails } from "/js/global/apis.js";
 
+import { STORAGE_KEYS } from "./global/constants.js";
+import { isItemInTheStorage } from "/js/global/crud.js";
+
 const homePageLoadingEl = document.querySelector(".spinner-container");
 const homePageMessagesEl = document.querySelector(".messages-container");
 
@@ -14,7 +17,7 @@ const getAllProductsData = async function () {
 
   try {
     const resData = await fetchAllProductsOrProductDetails(
-      "https://dummyjson.com/products",
+      "https://dummyjson.com/products/?limit=20",
     );
 
     if (resData.errorMessage) {
@@ -28,9 +31,23 @@ const getAllProductsData = async function () {
     homePageContentEl.style.display = "block";
 
     products.forEach((product) => {
-      const productItemEl = document.createElement("li");
-      productItemEl.textContent = product.title;
-      homePageProductsListEl.appendChild(productItemEl);
+      // Check if the product is already in the cart storage
+      if (!isItemInTheStorage(STORAGE_KEYS.CART_KEY, product.id)) {
+        const productItemEl = document.createElement("li");
+
+        productItemEl.innerHTML = `
+        <div class="card-root-container">
+          <div class="home-page_card-inner__container">
+          <h3>${product.title}</h3>
+            <img src="${product.images[0]}" alt="${product.title}" />
+            <p>${product.description}</p>
+            <p> <strong> $${product.price} Kr</strong></p>
+          </div>
+        </div>
+        `;
+
+        homePageProductsListEl.appendChild(productItemEl);
+      }
     });
   } finally {
     homePageLoadingEl.style.display = "none";

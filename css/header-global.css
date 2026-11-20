@@ -1,0 +1,97 @@
+header {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  color: #ffffff;
+  z-index: 1000;
+}
+
+.root-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #09251c;
+  padding: 0.8rem 0.5rem;
+  z-index: 1000;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.hamburger-menu span {
+  width: 25px;
+  height: 3px;
+  background-color: currentColor;
+}
+
+.root-header nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+
+.nav-links-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  list-style: none;
+  padding: 1rem;
+  background-color: #09251c;
+  z-index: 1000;
+}
+
+.nav-links-list li a {
+  color: white;
+}
+
+#menu-toggle:checked ~ nav {
+  display: block;
+}
+
+.sub-header {
+  text-align: center;
+  background-color: #a55704;
+  padding: 4px;
+  /*  z-index: 1000; */
+}
+
+/* TABLET */
+
+@media (min-width: 768px) {
+  .hamburger-menu {
+    display: none;
+  }
+
+  .root-header nav {
+    display: block;
+    position: static;
+    width: auto;
+  }
+
+  .nav-links-list {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0;
+  }
+}
+
+/* DESKTOP */
+
+@media (min-width: 1024px) {
+  .nav-links-list {
+    gap: 2rem;
+  }
+}

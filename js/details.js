@@ -12,6 +12,8 @@ const detailsPageMessagesEl = document.querySelector(".messages-container");
 const detailsPageContentEl = document.querySelector("#detailsPageContent");
 
 const productTitleEl = document.querySelector("#detailsPageProductTitle");
+const productImageEl = document.querySelector("#detailsPageProductImage");
+
 const productCategoryEl = document.querySelector("#detailsPageProductCategory");
 const productDescriptionEl = document.querySelector(
   "#detailsPageProductDescription",
@@ -57,7 +59,11 @@ function renderDetailsPageContent(data) {
   updateButtonState(addToCartBtnEl, isOnCartList);
 
   productTitleEl.textContent = title;
-  productCategoryEl.textContent = category;
+
+  productImageEl.src = detailsImgUrl;
+  productImageEl.classList.add("details-page_image");
+
+  productCategoryEl.textContent += category;
   productDescriptionEl.textContent = description;
 
   addFavoriteBtnEl.addEventListener("click", () => {
