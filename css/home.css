@@ -15,24 +15,24 @@
   background-size: cover;
 }
 
-.intro-section_first__title,
-.intro-section_second__title,
-.intro-section__btn {
-  font-family: "Kirang Haerang", cursive;
+.home-page_intro-first__text,
+.home-page_intro-second__text,
+.home-page_to-catalog__btn {
+  font-family: cursive;
   position: absolute;
 }
 
-.intro-section_first__title {
+.home-page_intro-first__text {
   top: 5%;
   left: 4%;
 }
 
-.intro-section_second__title {
+.home-page_intro-second__text {
   text-align: center;
   bottom: 15%;
 }
 
-.intro-section__btn {
+.home-page_to-catalog__btn {
   bottom: 5%;
   left: 35%;
 }
@@ -82,11 +82,11 @@
     min-height: 93vh;
   }
 
-  .intro-section_second__title {
+  .home-page_intro-second__text {
     left: 40%;
   }
 
-  .intro-section__btn {
+  .home-page_to-catalog__btn {
     left: 49%;
     cursor: pointer;
   }
