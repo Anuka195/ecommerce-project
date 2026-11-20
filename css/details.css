@@ -1,4 +1,26 @@
-.details-page_image {
-  width: 300px;
+#detailsPageBody {
+  background-color: #f8eadc;
+}
+
+#detailsPageContent {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.details-page_intro-info__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#detailsPageProductImage {
+  width: var(--mobile-images-width);
   height: auto;
+}
+
+#detailsPageProductDescription {
+  width: 90%;
+  text-align: justify;
 }

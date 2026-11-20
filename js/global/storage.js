@@ -6,11 +6,3 @@ export function getData(key) {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : [];
 }
-
-export function removeData(key) {
-  localStorage.removeItem(key);
-}
-
-export function clearStorage() {
-  localStorage.clear();
-}

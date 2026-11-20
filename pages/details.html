@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/header-global.css" />
     <link rel="stylesheet" href="../css/details.css" />
   </head>
-  <body>
+  <body id="detailsPageBody">
     <header>
       <div class="root-header">
         <div>E-commerce</div>
@@ -30,21 +30,29 @@
       </div>
       <div class="sub-header">Details</div>
     </header>
-    <main id="detailsPageMain">
+    <main>
       <div class="spinner-container"></div>
       <div class="messages-container"></div>
       <div id="detailsPageContent">
-        <section>
-          <h3 id="detailsPageProductTitle"></h3>
+        <section class="details-page_intro-info__section">
+          <h2 id="detailsPageProductTitle"></h2>
           <img id="detailsPageProductImage" src="" alt="Product Image" />
-          <p id="detailsPageProductCategory">Category:</p>
           <p id="detailsPageProductDescription"></p>
+
+          <div class="details-page_extra-info__container">
+            <p id="detailsPageProductCategory">Category:</p>
+            <p id="detailsPageStock">Stock: ?</p>
+          </div>
+          <p>Price: ? KR</p>
         </section>
-        <div>
-          <button id="detailsPageAddFavoriteBtn">+ Favorite</button>
-          <button id="detailsPageAddToCartBtn">+ Cart</button>
+
+        <div class="details-page_buttons__container">
+          <div>
+            <button id="detailsPageAddFavoriteBtn">+ Favorite</button>
+            <button id="detailsPageAddToCartBtn">+ Cart</button>
+          </div>
+          <button id="detailsPageBackBtn">Back</button>
         </div>
-        <button id="detailsPageBackBtn">Back</button>
       </div>
     </main>
     <script src="../js/details.js" type="module"></script>

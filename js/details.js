@@ -47,7 +47,7 @@ const getDetailsData = async function () {
 };
 
 function renderDetailsPageContent(data) {
-  detailsPageContentEl.style.display = "block";
+  detailsPageContentEl.style.display = "flex";
 
   const { id, title, description, price, category, images } = data;
   const detailsImgUrl = images[0];
