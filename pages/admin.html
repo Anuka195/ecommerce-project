@@ -34,12 +34,45 @@
           <option value="title-asc">Title: A–Z</option>
           <option value="title-desc">Title: Z–A</option>
         </select>
+
+        <button type="button" id="addProductBtn">Add product</button>
       </aside>
+      
 
       <div id="adminPageLoading"></div>
       <div id="adminPageMessages"></div>
       <div id="adminPageContent"></div>
     </main>
+
+    <div id="addProduct" class="hidden">
+      <form id="addProductForm">
+        <h2>New product</h2>
+
+        <label>
+          Title
+          <input type="text" id="newTitle" required/>
+        </label>
+
+        <label>
+          Price
+          <input type="number" id="newPrice" min="0" step="0.01" required/>
+        </label>
+
+        <label>
+          Image URL
+          <input type="url" id="newImage" required/>
+        </label>
+
+        <label>
+          Category
+          <select id="newCategory" required></select>
+        </label>
+
+        <button type="submit">Add</button>
+        <button type="button" id="cancelAddBtn">Cancel</button>
+      </form>
+    </div>
+
     <script src="../js/admin.js" type="module"></script>
   </body>
 </html>

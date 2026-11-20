@@ -13,3 +13,27 @@ main  {
     align-items: center;
     border-bottom: 1px solid black;
 }
+
+#addProduct {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addProductForm {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+}
+
+#addProductForm label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#addProduct.hidden {
+    display: none;
+}

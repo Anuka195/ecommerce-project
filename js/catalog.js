@@ -1,9 +1,11 @@
 import { STORAGE_KEYS } from "/js/global/constants.js";
 import { addItemToStorage, isItemInTheStorage } from "/js/global/crud.js";
+import { timeOutTest } from "/js/global/utils.js";
 
 
 const dropdown = document.getElementById("filterDropDown");
 const sortDropdown = document.getElementById("sortDropDown");
+const catalogPageLoading = document.getElementById("catalogPageLoading");
 const catalogPageContent = document.getElementById("catalogPageContent");
 const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
@@ -173,6 +175,8 @@ sortDropdown.addEventListener("change", function () {
 
 
 // On start
+await timeOutTest(1000);
 let products = await createDataForCards(productsUrl)
+catalogPageLoading.style.display = "none";
 createCards(products)
-createFilter() 
+createFilter()
