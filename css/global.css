@@ -1,7 +1,7 @@
 :root {
-  --mobile-images-width: 350px;
-  /* --tablet-images-width: 400px;
-  --desktop-images-width: 450px; */
+  --mobile-images-width: 300px;
+  --tablet-images-width: 350px;
+  /*  --desktop-images-width: 450px; */
 }
 
 * {
