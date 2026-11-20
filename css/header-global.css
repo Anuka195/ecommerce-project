@@ -65,7 +65,7 @@ header {
   text-align: center;
   background-color: #a55704;
   padding: 4px;
-  /*  z-index: 1000; */
+  z-index: 1000;
 }
 
 /* TABLET */

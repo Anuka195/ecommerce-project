@@ -6,7 +6,7 @@
 
 #introSection {
   position: relative;
-  min-height: 94vh;
+  min-height: 92vh;
   background-image:
     linear-gradient(rgba(255, 217, 0, 0.1), rgba(0, 0, 0, 0.3)),
     url("../assets/vanilla-1800.webp");
@@ -16,19 +16,25 @@
 }
 
 .intro-section_first__title,
-.intro-section_second__title {
+.intro-section_second__title,
+.intro-section__btn {
   font-family: "Kirang Haerang", cursive;
   position: absolute;
 }
 
 .intro-section_first__title {
-  top: 3%;
+  top: 5%;
   left: 4%;
 }
 
 .intro-section_second__title {
+  text-align: center;
   bottom: 15%;
-  left: 3%;
+}
+
+.intro-section__btn {
+  bottom: 5%;
+  left: 35%;
 }
 
 .home-page_products__section {
@@ -73,13 +79,16 @@
 
 @media (min-width: 1024px) {
   #introSection {
-    min-height: 100vh;
+    min-height: 93vh;
   }
 
   .intro-section_second__title {
-    /*     bottom: 15%;
- */
-    left: 38%;
+    left: 40%;
+  }
+
+  .intro-section__btn {
+    left: 49%;
+    cursor: pointer;
   }
 
   #homePageProductsList {

@@ -5,7 +5,7 @@ export async function fetchAllProductsOrProductDetails(url) {
   let data = null;
 
   try {
-    await timeOutTest(2000);
+    await timeOutTest(1000);
 
     const res = await fetch(url);
     data = await res.json();
