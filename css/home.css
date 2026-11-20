@@ -83,7 +83,7 @@
 
 .home-page_card-inner__container img {
   width: var(--mobile-images-width);
-  height: auto;
+  /* height: auto; */
 }
 
 /* TABLET */

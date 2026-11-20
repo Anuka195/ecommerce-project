@@ -13,7 +13,7 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: #09251c;
-  padding: 0.8rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   z-index: 1000;
 }
 
@@ -71,6 +71,10 @@ header {
 /* TABLET */
 
 @media (min-width: 768px) {
+  .root-header {
+    padding: 0.8rem 0.5rem;
+  }
+
   .hamburger-menu {
     display: none;
   }
