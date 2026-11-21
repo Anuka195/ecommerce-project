@@ -4,30 +4,28 @@ import { addItemToStorage, isItemInTheStorage } from "/js/global/crud.js";
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
-
 const { CART_KEY, FAVORITES_KEY } = STORAGE_KEYS;
 
 const detailsPageLoadingEl = document.querySelector(".spinner-container");
 const detailsPageMessagesEl = document.querySelector(".messages-container");
 const detailsPageContentEl = document.querySelector("#detailsPageContent");
-
 const productTitleEl = document.querySelector("#detailsPageProductTitle");
 const productImageEl = document.querySelector("#detailsPageProductImage");
-
-const productCategoryEl = document.querySelector("#detailsPageProductCategory");
 const productDescriptionEl = document.querySelector(
   "#detailsPageProductDescription",
 );
+const extraInfoContainerEl = document.querySelector(
+  ".details-page_extra-info__container",
+);
 
+const priceTextEl = document.querySelector("#detailsPagePrice");
 const addFavoriteBtnEl = document.querySelector("#detailsPageAddFavoriteBtn");
 const addToCartBtnEl = document.querySelector("#detailsPageAddToCartBtn");
-
 const backBtnEl = document.querySelector("#detailsPageBackBtn");
 
 const getDetailsData = async function () {
   detailsPageLoadingEl.style.display = "block";
   detailsPageContentEl.style.display = "none";
-
   try {
     const resData = await fetchAllProductsOrProductDetails(
       "https://dummyjson.com/products/" + productId,
@@ -39,7 +37,6 @@ const getDetailsData = async function () {
       detailsPageMessagesEl.textContent = "An Error As Occurred";
       return;
     }
-
     renderDetailsPageContent(resData.data);
   } finally {
     detailsPageLoadingEl.style.display = "none";
@@ -49,7 +46,7 @@ const getDetailsData = async function () {
 function renderDetailsPageContent(data) {
   detailsPageContentEl.style.display = "flex";
 
-  const { id, title, description, price, category, images } = data;
+  const { id, title, description, price, stock, category, images } = data;
   const detailsImgUrl = images[0];
 
   const isOnFavoriteList = isItemInTheStorage(FAVORITES_KEY, id);
@@ -61,10 +58,16 @@ function renderDetailsPageContent(data) {
   productTitleEl.textContent = title;
 
   productImageEl.src = detailsImgUrl;
-  productImageEl.classList.add("details-page_image");
+  productImageEl.alt = title;
 
-  productCategoryEl.textContent += category;
   productDescriptionEl.textContent = description;
+
+  extraInfoContainerEl.innerHTML = `
+    <p> Category:<strong>${category}</strong></p>
+    <p>In Stock:<strong>${stock}</strong></p>
+  `;
+
+  priceTextEl.innerHTML = `<strong>${price} Kr</strong>`;
 
   addFavoriteBtnEl.addEventListener("click", () => {
     const { images } = data;

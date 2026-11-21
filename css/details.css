@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  padding-bottom: 20px;
 }
 
 .details-page_intro-info__section {
@@ -13,6 +14,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  margin-top: 1rem;
 }
 
 #detailsPageProductImage {
@@ -24,3 +26,28 @@
   width: 90%;
   text-align: justify;
 }
+
+.details-page_extra-info__container {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.details-page_buttons__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 1.5rem;
+}
+
+.details-page_buttons_inner__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* #detailsPageBackBtn {
+  padding: 10px;
+} */
