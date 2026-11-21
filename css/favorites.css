@@ -1,0 +1,36 @@
+.favorites__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 15px;
+}
+
+.favorites__remove-button {
+    width: 100%;
+}
+
+.favorites__title {
+    text-align: center;
+    margin: 20px 0;
+}
+.favorites__image {
+    width: 100%;
+    max-width: var(--mobile-images-width);
+}
+
+.favorites__card {
+    padding: 10px;
+}
+
+
+@media (min-width: 768px) {
+    .favorites__image {
+        max-width: var(--tablet-desktop-images-width);
+    }
+}
+@media (max-width: 767px) {
+    .favorites__list .card-root-container {
+        width: 100%;
+    }
+}

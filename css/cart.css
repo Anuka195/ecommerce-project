@@ -1,0 +1,75 @@
+
+/* Produktkorten i varukorgen */
+.cart__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 15px;
+}
+
+/* Totalpriset */
+.cart__total {
+    width: 100%;
+    text-align: center;
+}
+
+/* Till kassan-knappen */
+.cart__checkout-button {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+.cart__summary {
+    width: 100%;
+    text-align: center;
+     padding: 20px 0;
+}
+.cart__card {
+    padding: 10px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.cart__image {
+    width: 100%;
+    max-width: var(--mobile-images-width);
+    height: 300px;
+    object-fit: contain;
+}
+
+.cart__quantity-button {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.cart__remove-button {
+    display: block;
+    width: 100%;
+    margin-top: auto;
+    cursor: pointer;
+}
+.cart__title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+@media (min-width: 768px) {
+    .cart__image {
+        max-width: var(--tablet-desktop-images-width);
+    }
+}
+@media (max-width: 767px) {
+    .cart__card {
+        width: 100%;
+    }
+}
+@media (min-width: 768px) {
+    .cart__card {
+        width: 300px;
+    }
+}
