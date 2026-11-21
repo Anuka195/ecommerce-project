@@ -34,7 +34,7 @@ if (favorites.length === 0) {
 
         const removeButton = document.createElement("button");
         removeButton.textContent = "Ta bort favorit";
-        removeButton.classList.add("favorites__remove-button");
+        removeButton.classList.add("favorites__remove-button", "card-buttons");
 
         removeButton.addEventListener("click", () => {
             console.log("Favorit borttagen");

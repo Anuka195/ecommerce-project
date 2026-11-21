@@ -1,3 +1,5 @@
+
+/* Lista med favoritprodukter */
 .favorites__list {
     display: flex;
     flex-wrap: wrap;
@@ -6,34 +8,39 @@
     padding: 15px;
 }
 
+/* Ta bort-knappen */
 .favorites__remove-button {
     width: 100%;
 }
 
+/* Sidans rubrik */
 .favorites__title {
     text-align: center;
     margin: 20px 0;
 }
+
+/* Produktbilder */
 .favorites__image {
     width: 100%;
     max-width: var(--mobile-images-width);
+    height: auto;
 }
 
-.favorites__card {
-    padding: 10px;
-}
+/* Innehållet i produktkortet */
 .favorites__inner {
     padding: 10px;
 }
 
-
-@media (min-width: 768px) {
-    .favorites__image {
-        max-width: var(--tablet-desktop-images-width);
-    }
-}
+/* Mobil */
 @media (max-width: 767px) {
     .favorites__list .card-root-container {
         width: 100%;
+    }
+}
+
+/* Surfplatta och dator */
+@media (min-width: 768px) {
+    .favorites__image {
+        max-width: var(--tablet-desktop-images-width);
     }
 }

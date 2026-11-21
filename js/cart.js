@@ -70,7 +70,7 @@ if (cart.length === 0) {
         // Plusknapp
         const plusButton = document.createElement("button");
         plusButton.textContent = "+";
-        plusButton.classList.add("cart__quantity-button");
+        plusButton.classList.add("cart__quantity-button", "card-buttons");
 
         plusButton.addEventListener("click", function () {
             product.quantity += 1;
@@ -86,7 +86,7 @@ if (cart.length === 0) {
         // Minusknapp
         const minusButton = document.createElement("button");
         minusButton.textContent = "-";
-        minusButton.classList.add("cart__quantity-button");
+        minusButton.classList.add("cart__quantity-button", "card-buttons");
 
         minusButton.addEventListener("click", function () {
             if (product.quantity > 1) {
@@ -101,10 +101,16 @@ if (cart.length === 0) {
             }
         });
 
+        // Gemensam behållare för plus- och minusknapparna
+        const quantityButtons = document.createElement("div");
+        quantityButtons.classList.add("cart__quantity-buttons");
+
+        quantityButtons.append(plusButton, minusButton);
+
         // Ta bort-knapp
         const removeButton = document.createElement("button");
         removeButton.textContent = "Ta bort";
-        removeButton.classList.add("cart__remove-button");
+        removeButton.classList.add("cart__remove-button", "card-buttons");
 
         removeButton.addEventListener("click", function () {
             const productIndex = cart.findIndex(function (item) {
@@ -113,7 +119,6 @@ if (cart.length === 0) {
 
             if (productIndex !== -1) {
                 cart.splice(productIndex, 1);
-                
             }
 
             productCard.remove();
@@ -133,8 +138,7 @@ if (cart.length === 0) {
             productImage,
             productQuantity,
             productSumma,
-            plusButton,
-            minusButton,
+            quantityButtons,
             removeButton
         );
 
@@ -159,3 +163,4 @@ if (cart.length === 0) {
         window.location.href = "checkout.html";
     });
 }
+
