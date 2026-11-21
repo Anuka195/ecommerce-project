@@ -22,6 +22,9 @@
 .favorites__card {
     padding: 10px;
 }
+.favorites__inner {
+    padding: 10px;
+}
 
 
 @media (min-width: 768px) {

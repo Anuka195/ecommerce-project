@@ -47,10 +47,8 @@
     cursor: pointer;
 }
 
-.cart__remove-button {
-    display: block;
-    width: 100%;
-    margin-top: auto;
+.cart__quantity-button {
+    margin-right: 5px;
     cursor: pointer;
 }
 .cart__title {

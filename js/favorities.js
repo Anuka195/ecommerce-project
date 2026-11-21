@@ -1,6 +1,6 @@
 import { STORAGE_KEYS } from "./global/constants.js";
 
-const {FAVORITES_KEY}= STORAGE_KEYS
+const { FAVORITES_KEY } = STORAGE_KEYS
 
 console.log(STORAGE_KEYS.CART_KEY)
 
@@ -16,6 +16,9 @@ if (favorites.length === 0) {
     favorites.forEach(function (product) {
         const productCard = document.createElement("div");
         productCard.classList.add("card-root-container");
+
+        const innerContainer = document.createElement("div");
+        innerContainer.classList.add("favorites__inner");
 
         const productName = document.createElement("h3");
         productName.textContent = product.title;
@@ -48,9 +51,16 @@ if (favorites.length === 0) {
                 favoritesContent.textContent = "Du har inga favoriter ännu.";
             }
         });
-productCard.append(productName, productPrice, productImage, removeButton);
+        innerContainer.append(
+            productName,
+            productPrice,
+            productImage,
+            removeButton
+        );
+
+        productCard.appendChild(innerContainer);
         favoritesContent.appendChild(productCard);
-        
+
     });
 }
 

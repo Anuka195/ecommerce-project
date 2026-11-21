@@ -1,3 +1,4 @@
+
 import { STORAGE_KEYS } from "./global/constants.js";
 
 const { CART_KEY } = STORAGE_KEYS;
@@ -9,6 +10,7 @@ const cartContent = document.getElementById("cartPageContent");
 const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
 
 console.log(cart);
+
 let totalPrice = 0;
 
 // Skapa ett element för hela varukorgens totalpris
@@ -23,7 +25,8 @@ function updateCart() {
         totalPrice += product.price * product.quantity;
     });
 
-    totalText.textContent = "Totalt att betala: " + totalPrice.toFixed(2) + " kr";
+    totalText.textContent =
+        "Totalt att betala: " + totalPrice.toFixed(2) + " kr";
 
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
@@ -38,7 +41,6 @@ if (cart.length === 0) {
 
         // Skapa produktkort
         const productCard = document.createElement("div");
-        productCard.classList.add("card-root-container");
         productCard.classList.add("card-root-container");
         productCard.classList.add("cart__card");
 
@@ -99,6 +101,7 @@ if (cart.length === 0) {
             }
         });
 
+        // Ta bort-knapp
         const removeButton = document.createElement("button");
         removeButton.textContent = "Ta bort";
         removeButton.classList.add("cart__remove-button");
@@ -110,6 +113,7 @@ if (cart.length === 0) {
 
             if (productIndex !== -1) {
                 cart.splice(productIndex, 1);
+                
             }
 
             productCard.remove();
@@ -117,10 +121,12 @@ if (cart.length === 0) {
             updateCart();
 
             if (cart.length === 0) {
-                cartContent.textContent = "Du har inga produkter i varukorgen.";
+                cartContent.textContent =
+                    "Du har inga produkter i varukorgen.";
             }
         });
 
+        // Lägg till innehållet i produktkortet
         productCard.append(
             productName,
             productPrice,
@@ -129,20 +135,20 @@ if (cart.length === 0) {
             productSumma,
             plusButton,
             minusButton,
-            removeButton,
+            removeButton
         );
 
         cartContent.appendChild(productCard);
     });
 
-    cartContent.appendChild(totalText);
-
     updateCart();
 
+    // Till kassan-knapp
     const checkoutButton = document.createElement("button");
     checkoutButton.textContent = "Till kassan";
     checkoutButton.classList.add("cart__checkout-button");
 
+    // Behållare för totalpris och kassaknapp
     const cartSummary = document.createElement("div");
     cartSummary.classList.add("cart__summary");
 
