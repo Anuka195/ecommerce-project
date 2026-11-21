@@ -13,6 +13,7 @@ let totalPrice = 0;
 
 // Skapa ett element för hela varukorgens totalpris
 const totalText = document.createElement("h3");
+totalText.classList.add("cart__total");
 
 // Uppdatera totalpriset och spara varukorgen
 function updateCart() {
@@ -37,6 +38,9 @@ if (cart.length === 0) {
 
         // Skapa produktkort
         const productCard = document.createElement("div");
+        productCard.classList.add("card-root-container");
+        productCard.classList.add("card-root-container");
+        productCard.classList.add("cart__card");
 
         // Produktens namn
         const productName = document.createElement("h3");
@@ -50,20 +54,21 @@ if (cart.length === 0) {
         const productImage = document.createElement("img");
         productImage.src = product.thm || product.imageUrl;
         productImage.alt = product.title;
-        productImage.width = 150;
+        productImage.classList.add("cart__image");
 
         // Antal produkter
         const productQuantity = document.createElement("p");
         productQuantity.textContent = "Antal: " + product.quantity;
 
         // Summa för produkten
-        const productSumma = document.createElement("p"); 
+        const productSumma = document.createElement("p");
         productSumma.textContent =
             "Summa: " + product.price * product.quantity + " kr";
 
         // Plusknapp
         const plusButton = document.createElement("button");
         plusButton.textContent = "+";
+        plusButton.classList.add("cart__quantity-button");
 
         plusButton.addEventListener("click", function () {
             product.quantity += 1;
@@ -79,6 +84,7 @@ if (cart.length === 0) {
         // Minusknapp
         const minusButton = document.createElement("button");
         minusButton.textContent = "-";
+        minusButton.classList.add("cart__quantity-button");
 
         minusButton.addEventListener("click", function () {
             if (product.quantity > 1) {
@@ -95,6 +101,7 @@ if (cart.length === 0) {
 
         const removeButton = document.createElement("button");
         removeButton.textContent = "Ta bort";
+        removeButton.classList.add("cart__remove-button");
 
         removeButton.addEventListener("click", function () {
             const productIndex = cart.findIndex(function (item) {
@@ -134,8 +141,13 @@ if (cart.length === 0) {
 
     const checkoutButton = document.createElement("button");
     checkoutButton.textContent = "Till kassan";
+    checkoutButton.classList.add("cart__checkout-button");
 
-    cartContent.appendChild(checkoutButton);
+    const cartSummary = document.createElement("div");
+    cartSummary.classList.add("cart__summary");
+
+    cartSummary.append(totalText, checkoutButton);
+    cartContent.appendChild(cartSummary);
 
     checkoutButton.addEventListener("click", function () {
         window.location.href = "checkout.html";

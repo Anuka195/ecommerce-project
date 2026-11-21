@@ -15,6 +15,7 @@ if (favorites.length === 0) {
 } else {
     favorites.forEach(function (product) {
         const productCard = document.createElement("div");
+        productCard.classList.add("card-root-container");
 
         const productName = document.createElement("h3");
         productName.textContent = product.title;
@@ -26,9 +27,11 @@ if (favorites.length === 0) {
         productImage.src = product.imageUrl;
         productImage.alt = product.title;
         productImage.width = 150;
+        productImage.classList.add("favorites__image");
 
         const removeButton = document.createElement("button");
         removeButton.textContent = "Ta bort favorit";
+        removeButton.classList.add("favorites__remove-button");
 
         removeButton.addEventListener("click", () => {
             console.log("Favorit borttagen");
