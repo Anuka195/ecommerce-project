@@ -35,22 +35,26 @@
       <div class="spinner-container"></div>
       <div class="messages-container"></div>
       <div id="detailsPageContent">
-        <section class="details-page_intro-info__section">
-          <h2 id="detailsPageProductTitle"></h2>
-          <img id="detailsPageProductImage" src="" alt="Product Image" />
-          <p id="detailsPageProductDescription"></p>
+        <div class="details-page_desktop__inner-container">
+          <section class="details-page_intro-info__section">
+            <h2 id="detailsPageProductTitle"></h2>
+            <img id="detailsPageProductImage" src="" alt="Product Image" />
+          </section>
 
-          <div class="details-page_extra-info__container"></div>
-          <p id="detailsPagePrice"></p>
-        </section>
+          <section class="details-page_details-info__section">
+            <p><strong>Description</strong></p>
+            <p id="detailsPageProductDescription"></p>
 
-        <div class="details-page_buttons__container">
-          <div class="details-page_buttons_inner__container">
-            <button id="detailsPageAddFavoriteBtn">+ Favorite</button>
-            <button id="detailsPageAddToCartBtn">+ Cart</button>
-          </div>
-          <button id="detailsPageBackBtn">Back</button>
+            <div class="details-page_extra-info__container"></div>
+            <p id="detailsPagePrice"></p>
+
+            <div class="details-page_buttons__container">
+              <button id="detailsPageAddFavoriteBtn">+ Favorite</button>
+              <button id="detailsPageAddToCartBtn">+ Cart</button>
+            </div>
+          </section>
         </div>
+        <button id="detailsPageBackBtn">Back</button>
       </div>
     </main>
     <script src="../js/details.js" type="module"></script>

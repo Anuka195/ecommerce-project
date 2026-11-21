@@ -63,8 +63,8 @@ function renderDetailsPageContent(data) {
   productDescriptionEl.textContent = description;
 
   extraInfoContainerEl.innerHTML = `
-    <p> Category:<strong>${category}</strong></p>
-    <p>In Stock:<strong>${stock}</strong></p>
+    <p> Category: <strong>${category}</strong></p>
+    <p>In Stock: <strong>${stock} items</strong></p>
   `;
 
   priceTextEl.innerHTML = `<strong>${price} Kr</strong>`;
@@ -106,5 +106,5 @@ getDetailsData();
 
 function updateButtonState(button, isDisabled) {
   button.disabled = isDisabled;
-  button.style.opacity = isDisabled ? "0.8" : "1";
+  button.style.opacity = isDisabled ? "0.5" : "1";
 }
