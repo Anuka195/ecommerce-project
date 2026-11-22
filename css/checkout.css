@@ -1,0 +1,88 @@
+/* Produkterna i kassan */
+#checkoutProducts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+}
+
+/* Produktkort */
+.checkout__card {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Mobil */
+@media (max-width: 767px) {
+    .checkout__card {
+        width: 100%;
+    }
+}
+/* Produktbilder */
+.checkout__image {
+    width: 100%;
+    max-width: var(--mobile-images-width);
+    height: 300px;
+    object-fit: contain;
+}
+
+/* Totalpris */
+#checkoutTotal {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Surfplatta och dator */
+@media (min-width: 768px) {
+    .checkout__image {
+        max-width: var(--tablet-desktop-images-width);
+    }
+}
+/* Kassans huvudinnehåll */
+main {
+    text-align: center;
+    padding: 20px 15px;
+}
+
+/* Rubriken Din beställning */
+main h2 {
+    margin-bottom: 20px;
+}
+
+/* Länk tillbaka till varukorgen eller katalogen */
+#checkoutBackLink {
+    display: block;
+    width: fit-content;
+    margin: 15px auto;
+    padding: 10px 16px;
+    background-color: #09251c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#checkoutBackLink:hover {
+    background-color: #174b39;
+}
+
+#checkoutBackLink:focus-visible {
+    outline: 3px solid #09251c;
+    outline-offset: 3px;
+}
+
+/* Köp-knappen */
+#buyButton {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 15px auto;
+    cursor: pointer;
+}
+
+/* Meddelande efter köp */
+#checkoutMessage {
+    text-align: center;
+    margin-top: 20px;
+}

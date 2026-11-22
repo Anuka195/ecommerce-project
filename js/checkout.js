@@ -11,6 +11,7 @@ const checkoutProducts = document.getElementById("checkoutProducts");
 const checkoutTotal = document.getElementById("checkoutTotal");
 const buyButton = document.getElementById("buyButton");
 const checkoutMessage = document.getElementById("checkoutMessage");
+const checkoutBackLink = document.getElementById("checkoutBackLink");
 
 console.log(checkout);
 
@@ -23,6 +24,8 @@ let totalPrice = 0;
 
 checkout.forEach(function (product) {
     const productCard = document.createElement("div");
+    productCard.classList.add("card-root-container");
+    productCard.classList.add("checkout__card");
 
     const productName = document.createElement("h3")
     productName.textContent = product.title;
@@ -41,7 +44,7 @@ checkout.forEach(function (product) {
     const productImage = document.createElement("img");
     productImage.src = product.thm || product.imageUrl;
     productImage.alt = product.title;
-    productImage.width = 150;
+    productImage.classList.add("checkout__image");
 
     productCard.append(productName,
         productPrice,
@@ -70,4 +73,6 @@ buyButton.addEventListener("click", function () {
     checkoutProducts.innerHTML = "";
 
     checkoutProducts.textContent = "Din varukorg är tom.";
+    checkoutBackLink.href = "./catalog.html";
+    checkoutBackLink.textContent = "Fortsätt handla →";
 });
