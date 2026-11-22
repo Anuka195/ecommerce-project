@@ -89,6 +89,16 @@ button {
   border-radius: 4px;
 }
 
+.small-global-buttons {
+  background-color: #09251c;
+  color: white;
+  min-height: 44px;
+  padding: 10px 6px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+}
+
 .card-root-container {
   max-width: 360px;
   background-color: #f8eadc;
@@ -116,6 +126,12 @@ button {
   button {
     padding: 10px 18px;
   }
+
+  .small-global-buttons {
+    min-height: 46px;
+    padding: 10px 12px;
+    font-size: 0.875rem;
+  }
 }
 
 /* DESKTOP */
@@ -142,14 +158,10 @@ button {
     cursor: pointer;
   }
 
-  .root-header {
-    padding: 20px;
-  }
-
-  .nav-links-list {
-    display: flex;
-    list-style: none;
-    background-color: transparent;
-    gap: 50px;
+  .small-global-buttons {
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
   }
 }
