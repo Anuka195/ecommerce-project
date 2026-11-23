@@ -2,16 +2,82 @@ main  {
     padding: 0;
 }
 
-#adminPageContent img {
-    width: 100px;
+.adminFilters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background-color: #f8eadc;
+    border-bottom: 2px solid #09251c;
 }
 
-#adminPageContent > div {
-    margin: 6px 20px 0px 20px;
+
+#searchForm {
     display: flex;
-    gap: 16px;
-    align-items: center;
-    border-bottom: 1px solid black;
+    gap: 5px;
+}
+
+#searchInput {
+    flex: 1;
+    min-width: 0;
+}
+
+#searchInput, .adminFilters select {
+    padding: 8px 10px;
+    font-size: 1rem;
+    border: 2px solid #09251c;
+    border-radius: 4px;
+    background-color: white;
+}
+
+#searchForm button, #addProductBtn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.adminList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 15px;
+}
+
+
+.adminCard {
+    padding: 10px;
+}
+
+.adminImage {
+    width: 100%;
+    max-width: var(--mobile-images-width);
+    height: auto;
+}
+
+
+.adminButton {
+    width: 100%;
+    margin-top: 5px;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.adminDeleteButton {
+    background-color: #b00020;
+}
+
+
+.adminInput {
+    width: 100%;
+    margin-top: 5px;
+    padding: 6px 8px;
+    font-size: 1rem;
+    border: 2px solid #09251c;
+    border-radius: 4px;
 }
 
 #addProduct {
@@ -21,6 +87,7 @@ main  {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2000;
 }
 
 #addProductForm {
@@ -36,4 +103,27 @@ main  {
 
 #addProduct.hidden {
     display: none;
+}
+
+/* Mobil */
+@media (max-width: 767px) {
+    .adminList .card-root-container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .adminImage {
+        max-width: var(--tablet-desktop-images-width);
+    }
+
+    .adminFilters {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #searchForm {
+        width: 350px;
+    }
 }

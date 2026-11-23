@@ -45,6 +45,7 @@ async function createCards(data) {
         const container = document.getElementById("adminPageContent");
 
         const card = document.createElement("div");
+        card.classList.add("card-root-container", "adminCard");
 
 
         const a = document.createElement('a');
@@ -52,6 +53,7 @@ async function createCards(data) {
 
         const img = document.createElement("img");
         img.src = product.img[0];
+        img.classList.add("adminImage");
         a.append(img)
 
 
@@ -69,6 +71,7 @@ async function createCards(data) {
 
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
+        editBtn.classList.add("adminButton");
 
 
         function showView() {
@@ -79,26 +82,31 @@ async function createCards(data) {
         editBtn.addEventListener("click", () => {
             const titleInput = document.createElement("input");
             titleInput.value = product.title;
+            titleInput.classList.add("adminInput");
 
             const priceInput = document.createElement("input");
             priceInput.type = "number";
             priceInput.value = product.price;
+            priceInput.classList.add("adminInput");
 
             const saveBtn = document.createElement("button");
             saveBtn.textContent = "Save";
+            saveBtn.classList.add("adminButton");
 
             const deleteBtn = document.createElement("button");
             deleteBtn.textContent = "Delete";
+            deleteBtn.classList.add("adminButton", "adminDeleteButton");
 
             const cancelBtn = document.createElement("button");
             cancelBtn.textContent = "Cancel";
+            cancelBtn.classList.add("adminButton");
 
-            // SPARA
+
             saveBtn.addEventListener("click", async () => {
                 const newTitle = titleInput.value;
                 const newPrice = Number(priceInput.value);
 
-                await fetchData(productsUrl + product.id, {
+                await fetchData(productsUrl + "/" + product.id, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ title: newTitle, price: newPrice })
@@ -113,7 +121,7 @@ async function createCards(data) {
 
             deleteBtn.addEventListener("click", async () => {
 
-                await fetchData(productsUrl + product.id, { method: "DELETE" });
+                await fetchData(productsUrl + "/" + product.id, { method: "DELETE" });
                 products = products.filter(prod => prod.id !== product.id);
                 card.remove();
             });
@@ -211,7 +219,7 @@ cancelAddBtn.addEventListener("click", () => {
 });
 
 addProductForm.addEventListener("submit", async (event) => {
-    event.preventDefault(); // stoppa att sidan laddas om
+    event.preventDefault();
 
     const newProduct = {
         title: document.getElementById("newTitle").value,
@@ -244,7 +252,7 @@ addProductForm.addEventListener("submit", async (event) => {
 
 
 
-// On start
+// Start
 let products = await createDataForCards(productsUrl)
 createCards(products)
 createFilter()

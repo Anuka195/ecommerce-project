@@ -47,13 +47,14 @@ async function createCards(data) {
         const container = document.getElementById("catalogPageContent");
     
         const card = document.createElement("div");
-    
+        card.classList.add("card-root-container", "catalogCard")
 
         const a = document.createElement('a');
         a.href = `details.html?id=${product.id}`
 
         const img = document.createElement("img");
         img.src = product.img[0];
+        img.classList.add("catalogImage");
         a.append(img)
         
     
@@ -72,6 +73,7 @@ async function createCards(data) {
 
         const cartBtn = document.createElement("button");
         cartBtn.textContent = checkBtn(product.id, STORAGE_KEYS.CART_KEY) + "cart";
+        cartBtn.classList.add("catalogButton");
 
         cartBtn.addEventListener("click", () => {
             if (!isItemInTheStorage(STORAGE_KEYS.CART_KEY, product.id)) {
@@ -82,6 +84,7 @@ async function createCards(data) {
 
         const favBtn = document.createElement("button");
         favBtn.textContent = checkBtn(product.id, STORAGE_KEYS.FAVORITES_KEY) + "favorites";
+        favBtn.classList.add("catalogButton");
 
         favBtn.addEventListener("click", () => {
             if (!isItemInTheStorage(STORAGE_KEYS.FAVORITES_KEY, product.id)) {

@@ -1,3 +1,87 @@
-#catalogPageContent img {
-    width: 200px;
+
+.catalogFilters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background-color: #f8eadc;
+    border-bottom: 2px solid #09251c;
+}
+
+
+#searchForm {
+    display: flex;
+    gap: 5px;
+}
+
+#searchInput {
+    flex: 1;
+    min-width: 0;
+}
+
+
+#searchInput, .catalogFilters select {
+    padding: 8px 10px;
+    font-size: 1rem;
+    border: 2px solid #09251c;
+    border-radius: 4px;
+    background-color: white;
+}
+
+#searchForm button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+.catalogList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 15px;
+}
+
+
+.catalogCard {
+    padding: 10px;
+}
+
+
+.catalogImage {
+    width: 100%;
+    max-width: var(--mobile-images-width);
+    height: auto;
+}
+
+
+.catalogButton {
+    width: 100%;
+    margin-top: 1px;
+    bottom: 5px;
+}
+
+
+@media (max-width: 767px) {
+    .catalogList .card-root-container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .catalogFilters {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #searchForm {
+        width: 350px;
+    }
+
+    .catalogImage {
+        max-width: var(--tablet-desktop-images-width);
+    }
 }

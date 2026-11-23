@@ -5,12 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>admin</title>
     <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/header-global.css" />
     <link rel="stylesheet" href="../css/admin.css" />
   </head>
   <body>
+    <header>
+    <div class="root-header">
+      E-commerce
+      <input type="checkbox" id="menu-toggle">
+
+      <label for="menu-toggle" class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <nav>
+        <ul class="nav-links-list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../pages/catalog.html">Catalog</a></li>
+          <li><a href="../pages/favorites.html">Favorites</a></li>
+          <li><a href="../pages/cart.html">Cart</a></li>
+          <li><a href="../pages/admin.html">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sub-header">Admin</div>
+  </header>
     <main id="adminPageMain">
 
-      <aside>
+      <aside class="adminFilters">
         <form id="searchForm">
           <input
             type="search"
@@ -41,7 +64,7 @@
 
       <div id="adminPageLoading"></div>
       <div id="adminPageMessages"></div>
-      <div id="adminPageContent"></div>
+      <div id="adminPageContent" class="adminList"></div>
     </main>
 
     <div id="addProduct" class="hidden">
