@@ -132,7 +132,7 @@
   }
 
   .home-page_to-catalog__btn {
-    left: 49%;
+    left: 47%;
     cursor: pointer;
   }
 
@@ -141,18 +141,9 @@
   }
 
   #homePageProductsList {
-    /* display: grid; */
     grid-template-columns: repeat(
       auto-fit,
       minmax(var(--tablet-desktop-images-width), 1fr)
     );
   }
-
-  /* #homePageProductsList img {
-    width: var(--desktop-images-width);
-  } */
-
-  /* .home-page_card-inner__container img {
-    width: var(--desktop-images-width);
-  } */
 }
