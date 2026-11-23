@@ -30,10 +30,11 @@
 .home-page_intro-second__text {
   text-align: center;
   bottom: 15%;
+  left: 4%;
 }
 
 .home-page_to-catalog__btn {
-  bottom: 5%;
+  bottom: 6%;
   left: 35%;
 }
 
@@ -88,7 +89,7 @@
 /* TABLET */
 @media (min-width: 768px) {
   #introSection {
-    min-height: 93vh;
+    min-height: 94vh;
   }
   .home-page_intro-first__text {
     left: 25%;
@@ -99,7 +100,8 @@
   }
 
   .home-page_to-catalog__btn {
-    left: 40%;
+    bottom: 7%;
+    left: 42%;
   }
 
   #homePageProductsList {
