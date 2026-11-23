@@ -54,6 +54,7 @@ async function createCards(data) {
 
         const img = document.createElement("img");
         img.src = product.img[0];
+        img.alt = "Bild på " + product.title;
         img.classList.add("catalogImage");
         a.append(img)
         
