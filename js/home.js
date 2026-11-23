@@ -1,7 +1,6 @@
-import { fetchAllProductsOrProductDetails } from "/js/global/apis.js";
-
 import { STORAGE_KEYS } from "./global/constants.js";
 import { isItemInTheStorage } from "/js/global/crud.js";
+import { timeOutTest } from "/js/global/utils.js";
 
 const homePageLoadingEl = document.querySelector(".spinner-container");
 const homePageMessagesEl = document.querySelector(".messages-container");
@@ -11,22 +10,20 @@ const homePageContentEl = document.querySelector("#homePageContent");
 const toCatalogBtnEl = document.querySelector("#homePageToCatalogBtn");
 const homePageProductsListEl = document.querySelector("#homePageProductsList");
 
-const getAllProductsData = async function () {
+const getRelatedProducts = async function () {
   homePageLoadingEl.style.display = "block";
   homePageContentEl.style.display = "none";
 
   try {
-    const resData = await fetchAllProductsOrProductDetails(
-      "https://dummyjson.com/products/?limit=20",
-    );
+    await timeOutTest(1000);
+    const res = await fetch("https://dummyjson.com/products/?limit=20");
 
-    if (resData.errorMessage) {
-      homePageLoadingEl.style.display = "none";
-      homePageMessagesEl.classList.add("error-message");
-      homePageMessagesEl.textContent = "An Error As Occurred:";
-      return;
+    if (!res.ok) {
+      throw new Error("Failed to fetch product details");
     }
-    const products = resData.data.products;
+
+    const data = await res.json();
+    const products = data.products;
 
     homePageContentEl.style.display = "block";
 
@@ -49,12 +46,15 @@ const getAllProductsData = async function () {
         homePageProductsListEl.appendChild(productItemEl);
       }
     });
+  } catch (e) {
+    homePageMessagesEl.classList.add("error-message");
+    homePageMessagesEl.textContent = "An Error As Occurred:";
   } finally {
     homePageLoadingEl.style.display = "none";
   }
 };
 
-getAllProductsData();
+getRelatedProducts();
 
 toCatalogBtnEl.addEventListener("click", () => {
   window.location.href = "../pages/catalog.html";

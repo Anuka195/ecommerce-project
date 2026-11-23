@@ -15,6 +15,7 @@ header {
   background-color: #09251c;
   padding: 0.5rem 0.5rem;
   z-index: 1000;
+  padding: 0.8rem;
 }
 
 #menu-toggle {

@@ -1,6 +1,6 @@
-import { fetchAllProductsOrProductDetails } from "/js/global/apis.js";
 import { STORAGE_KEYS } from "/js/global/constants.js";
 import { addItemToStorage, isItemInTheStorage } from "/js/global/crud.js";
+import { timeOutTest } from "/js/global/utils.js";
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
@@ -27,17 +27,19 @@ const getDetailsData = async function () {
   detailsPageLoadingEl.style.display = "block";
   detailsPageContentEl.style.display = "none";
   try {
-    const resData = await fetchAllProductsOrProductDetails(
-      "https://dummyjson.com/products/" + productId,
-    );
+    await timeOutTest(1000);
+    const res = await fetch("https://dummyjson.com/products/" + productId);
 
-    if (resData.errorMessage) {
-      detailsPageLoadingEl.style.display = "none";
-      detailsPageMessagesEl.classList.add("error-message");
-      detailsPageMessagesEl.textContent = "An Error As Occurred";
-      return;
+    if (!res.ok) {
+      throw new Error("Failed to fetch product details");
     }
-    renderDetailsPageContent(resData.data);
+
+    const data = await res.json();
+
+    renderDetailsPageContent(data);
+  } catch (e) {
+    detailsPageMessagesEl.classList.add("error-message");
+    detailsPageMessagesEl.textContent = "An Error As Occurred";
   } finally {
     detailsPageLoadingEl.style.display = "none";
   }
@@ -64,7 +66,7 @@ function renderDetailsPageContent(data) {
 
   extraInfoContainerEl.innerHTML = `
     <p> Category: <strong>${category}</strong></p>
-    <p>In Stock: <strong>${stock} items</strong></p>
+    <p>In Stock: <strong>${stock}</strong></p>
   `;
 
   priceTextEl.innerHTML = `<strong>${price} Kr</strong>`;
