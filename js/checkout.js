@@ -62,6 +62,9 @@ checkoutTotal.textContent =
 
 buyButton.addEventListener("click", function () {
     checkoutMessage.textContent = "🎉 Tack för ditt köp! Din beställning har genomförts.";
+    setTimeout(function () {
+        checkoutMessage.textContent = "";
+    }, 5000);
 
     localStorage.removeItem(CART_KEY);
 
