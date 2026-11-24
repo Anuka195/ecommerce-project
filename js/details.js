@@ -1,6 +1,6 @@
-import { STORAGE_KEYS } from "/js/global/constants.js";
-import { addItemToStorage, isItemInTheStorage } from "/js/global/crud.js";
-import { timeOutTest } from "/js/global/utils.js";
+import { STORAGE_KEYS } from "./global/constants.js";
+import { addItemToStorage, isItemInTheStorage } from "./global/crud.js";
+import { timeOutTest } from "./global/utils.js";
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");

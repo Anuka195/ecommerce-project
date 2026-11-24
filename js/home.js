@@ -57,5 +57,5 @@ const getRelatedProducts = async function () {
 getRelatedProducts();
 
 toCatalogBtnEl.addEventListener("click", () => {
-  window.location.href = "../pages/catalog.html";
+  window.location.href = "./pages/catalog.html";
 });
