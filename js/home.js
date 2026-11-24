@@ -1,6 +1,6 @@
 import { STORAGE_KEYS } from "./global/constants.js";
-import { isItemInTheStorage } from "/js/global/crud.js";
-import { timeOutTest } from "/js/global/utils.js";
+import { isItemInTheStorage } from "./global/crud.js";
+import { timeOutTest } from "./global/utils.js";
 
 const homePageLoadingEl = document.querySelector(".spinner-container");
 const homePageMessagesEl = document.querySelector(".messages-container");
